@@ -1,0 +1,55 @@
+﻿@model Resume2.Models.Experience
+
+@{
+  ViewData["Title"] = "Details";
+  ViewData["resumeID"] = Model.ResumeID;
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Experience</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Company)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Company)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanyDesc)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CompanyDesc)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.JobTitle)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.JobTitle)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Resume)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Resume.FirstLast)
+        </dd>*@
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ExperienceID">Edit</a> |
+    <a asp-action="Index" asp-route-id="@ViewData["resumeID"]">Back to List</a>
+</div>

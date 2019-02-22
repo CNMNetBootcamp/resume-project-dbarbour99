@@ -1,0 +1,47 @@
+﻿@model List<Resume2.Models.Reference>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>References</h2>
+
+<p>
+    <a asp-action="Create" asp-route-id="@ViewData["ResumeID"]">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    Position
+                </th>
+                <th>
+                    Company
+                </th>
+                <th>
+                    First and Last Name
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Company)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstLast)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ReferenceID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ReferenceID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ReferenceID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

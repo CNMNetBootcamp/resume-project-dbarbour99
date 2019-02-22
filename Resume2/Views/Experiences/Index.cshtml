@@ -1,0 +1,61 @@
+﻿@model List<Resume2.Models.Experience>
+
+@{
+  ViewData["Title"] = "Index";
+}
+
+<h2>Experience</h2>
+
+<p>
+    <a asp-action="Create" asp-route-id="@ViewData["ResumeID"]">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    Company Name
+                </th>
+                <th>
+                    Company Description
+                </th>
+                <th>
+                    Job Title
+                </th>
+                <th>
+                    Start Date
+                </th>
+                <th>
+                    End Date
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Company)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyDesc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ExperienceID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ExperienceID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ExperienceID">Delete</a>  |
+                <a asp-area="" asp-route-id="@item.ExperienceID" asp-controller="Duties" asp-action="Index">Duties</a>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Resume2.Models.Resume>
+
+@{
+    ViewData["Title"] = "Resume Header Information";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Version
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstLast)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResumeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstLast)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ResumeID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ResumeID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ResumeID">Delete</a>  |
+                <a asp-area="" asp-route-id="@item.ResumeID" asp-controller="Experiences" asp-action="Index">Experience</a>  |
+                <a asp-area="" asp-route-id="@item.ResumeID" asp-controller="References" asp-action="Index">References</a>  |
+                <a asp-area="" asp-route-id="@item.ResumeID" asp-controller="Educations" asp-action="Index">Education</a>
+
+            </td>
+
+        </tr>
+
+
+        }
+    </tbody>
+</table>
+
+
