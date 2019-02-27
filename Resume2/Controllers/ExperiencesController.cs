@@ -153,6 +153,7 @@ namespace Resume2.Controllers
       var experience = await _context.Experiences.SingleOrDefaultAsync(m => m.ExperienceID == id);
       _context.Experiences.Remove(experience);
       await _context.SaveChangesAsync();
+
       return RedirectToAction(nameof(Index),"Experiences",new { id=experience.ResumeID});
     }
 

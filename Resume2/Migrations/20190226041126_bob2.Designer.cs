@@ -11,9 +11,10 @@ using System;
 namespace Resume2.Migrations
 {
     [DbContext(typeof(Resume2Context))]
-    partial class Resume2ContextModelSnapshot : ModelSnapshot
+    [Migration("20190226041126_bob2")]
+    partial class bob2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

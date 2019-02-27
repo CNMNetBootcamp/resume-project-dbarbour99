@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,7 +11,8 @@ using Resume2.Models;
 
 namespace Resume2.Controllers
 {
-    public class ResumesController : Controller
+  [Authorize]
+  public class ResumesController : Controller
     {
         private readonly Resume2Context _context;
 

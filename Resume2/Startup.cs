@@ -38,10 +38,10 @@ namespace Resume2
       //  y.ClientSecret = Configuration["Facebook:AppSecret"];
       //});
 
-      //services.AddAuthentication().AddGoogle(y => {
-      //  y.ClientId = Configuration["Google:client_id"];
-      //  y.ClientSecret = Configuration["Google:client_secret"];
-      //});
+      services.AddAuthentication().AddGoogle(y => {
+        y.ClientId = Configuration["Google:client_id"];
+        y.ClientSecret = Configuration["Google:client_secret"];
+      });
 
 
       services.Configure<IdentityOptions>(options =>

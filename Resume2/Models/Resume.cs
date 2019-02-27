@@ -28,9 +28,9 @@ namespace Resume2.Models
     public string Phone { get; set; }
     public string Summary { get; set; }
 
-    public ICollection<Experience> Experience { get; set; }
-    public ICollection<Reference> Reference { get; set; }
-    public ICollection<Education> Education { get; set; }
+    public ICollection<Experience> Experiences { get; set; }
+    public ICollection<Reference> References { get; set; }
+    public ICollection<Education> Educations { get; set; }
 
 
   }

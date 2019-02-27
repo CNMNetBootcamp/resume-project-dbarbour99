@@ -1,18 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Resume2.Data;
 using Resume2.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace Resume2.Controllers
 {
   public class HomeController : Controller
   {
-    public IActionResult Index()
+    private readonly Resume2Context _context;
+    public HomeController(Resume2Context context)
     {
-      return View();
+      _context = context;
+    }
+
+    public async Task<IActionResult> Index(int? id)
+    {
+      var resume = await _context.Resumes
+        .Include(y => y.Experiences)
+          .ThenInclude(y => y.Dutys)
+        .Include(y => y.References)
+        .Include(y => y.Educations)
+        .AsNoTracking()
+        .SingleOrDefaultAsync(m => m.ResumeID == 1);
+
+      return View(resume);
     }
 
     public IActionResult About()
@@ -29,9 +41,9 @@ namespace Resume2.Controllers
       return View();
     }
 
-    public IActionResult Error()
-    {
-      return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-    }
+    //public IActionResult Error()
+    //{
+    //  //return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    //}
   }
 }
