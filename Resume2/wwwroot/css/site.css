@@ -1,6 +1,28 @@
-﻿body {
+﻿
+h2 {
+    font-size: 30px;
+}
+ul.a {
+    list-style-type: circle;
+}
+
+ul.b {
+    list-style-type: square;
+}
+
+ol.c {
+    list-style-type: upper-roman;
+}
+
+ol.d {
+    list-style-type: lower-alpha;
+}
+
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-size: 15px;
 }
 
 /* Wrapping element */

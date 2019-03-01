@@ -4,81 +4,91 @@
     ViewData["Title"] = "My Resume";
 }
 
-<h4>Information</h4>
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dd>
-            @Html.DisplayFor(model => model.FirstLast)
-        </dd>
-        <dd>
+<body>
+    <dl class="dl-horizontal"></dl>
+
+    <div class="row">
+        <div class="col-sm-2"><img src="~/images/David.jpg" alt="Professional Picture" width="90" height="128"></div>
+
+        <div class="col-sm-2">
+            <b>@Html.DisplayFor(model => model.FirstLast)</b>
             @Html.DisplayFor(model => model.City)  @Html.DisplayFor(model => model.State)
-        </dd>
-        <dd>
             @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dd>
             @Html.DisplayFor(model => model.Phone)
-        </dd>
-        <dd>
+        </div>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-8">
             @Html.DisplayFor(model => model.Summary)
-        </dd>
-    </dl>
-</div>
+        </div>
 
-<h4>Experience</h4>
+        <dl class="dl-horizontal"></dl>
+    </div>
 
-@foreach (var experience in Model.Experiences.OrderByDescending(y => y.StartDate))
-{
-
-    <div>
-        <hr />
-        <dl class="dl-horizontal">
-            <dd>
-                @Html.DisplayFor(model => experience.JobTitle) , @Html.DisplayFor(model => experience.Company) ( @Html.DisplayFor(model => experience.StartDate) to @Html.DisplayFor(model => experience.EndDate) )
-            </dd>
-            <dd>
-                @Html.DisplayFor(model => experience.CompanyDesc)
-            </dd>
-            @foreach (var dutys in experience.Dutys)
+    <dl class="dl-horizontal"></dl>
+    <dl class="dl-horizontal"></dl>
+    <h4>Experience</h4>
+    <div class="container">
+        <div class="list-group">
+            @foreach (var experience in Model.Experiences.OrderByDescending(y => y.StartDate))
             {
-                <dd>
-                    -  @Html.DisplayFor(model => dutys.Description)
-                </dd>
+                <a href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading">
+                        @Html.DisplayFor(model => experience.JobTitle) ,
+                        @Html.DisplayFor(model => experience.Company) ( @Html.DisplayFor(model => experience.StartDate) to
+                        @Html.DisplayFor(model => experience.EndDate) )
+                    </h4>
+
+                    <p class="list-group-item-text"><I><b>@Html.DisplayFor(model => experience.CompanyDesc)</b></I></p>
+
+                    <ul class="a">
+                        @foreach (var dutys in experience.Dutys)
+                        {
+                            <li><p class="list-group-item-text">@Html.DisplayFor(model => dutys.Description)</p></li>
+                        }
+                        <p class="list-group-item-text"> .</p>
+                    </ul>
+                </a>
+
             }
-        </dl>
-    </div>
-}
+        </div>
 
-<h4>Education</h4>
-@foreach (var education in Model.Educations.OrderBy(y => y.StartDate))
-{
-
-    <div>
-        <hr />
-        <dl class="dl-horizontal">
-            <dd>
-                @Html.DisplayFor(model => education.Institution) , @Html.DisplayFor(model => education.City), @Html.DisplayFor(model => education.State)
-            </dd>
-            <dd>
-                @Html.DisplayFor(model => education.Degree)
-            </dd>
-            <dd>
-                @Html.DisplayFor(model => education.StartDate) to @Html.DisplayFor(model => education.EndDate)
-            </dd>
-        </dl>
     </div>
-}
 
-<h4>References</h4>
-@foreach (var reference in Model.References.OrderBy(y => y.FirstLast))
-{
-    <div>
-        <hr />
-        <dl class="dl-horizontal">
-            <dd>
-                @Html.DisplayFor(model => reference.FirstLast) , @Html.DisplayFor(model => reference.Position) , @Html.DisplayFor(model => reference.Company)
-            </dd>
-        </dl>
+
+    <h4>Education</h4>
+    <div class="container">
+        <div class="list-group">
+
+            @foreach (var education in Model.Educations.OrderBy(y => y.StartDate))
+            {
+                <a href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading">
+                        @Html.DisplayFor(model => education.Institution) ,
+                        @Html.DisplayFor(model => education.City), @Html.DisplayFor(model => education.State)
+                    </h4>
+                    <ul class="a">
+                        @Html.DisplayFor(model => education.Degree)
+                        @Html.DisplayFor(model => education.StartDate) to @Html.DisplayFor(model => education.EndDate)
+                    </ul>
+                </a>
+            }
+        </div>
+
     </div>
-}
+
+    <h4>References</h4>
+
+    <div class="container">
+        <div class="list-group">
+            @foreach (var reference in Model.References.OrderBy(y => y.FirstLast))
+            {<a href="#" class="list-group-item">
+                    <ul class="a">
+                        @Html.DisplayFor(model => reference.FirstLast) , @Html.DisplayFor(model => reference.Position) , @Html.DisplayFor(model => reference.Company)
+                    </ul>
+                </a>
+
+            }
+        </div>
+
+    </div>
+</body>
