@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Resume2.Data;
+using reusme2.Data;
 
 namespace Resume2
 {
@@ -23,7 +24,10 @@ namespace Resume2
         try
         {
           var context = services.GetRequiredService<Resume2Context>();
-          //DbInitializer.Initialize(context);
+          DbInitializer.Initialize(context);
+
+          var seccontext = services.GetRequiredService<ApplicationDbContext>();
+          seccontext.Database.EnsureCreated();
 
         }
         catch (Exception ex)
@@ -31,6 +35,8 @@ namespace Resume2
           var logger = services.GetRequiredService<ILogger<Program>>();
           logger.LogError(ex, "an error occured");
         }
+
+
       }
       host.Run();
     }
