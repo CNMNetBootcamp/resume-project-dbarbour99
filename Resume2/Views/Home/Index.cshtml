@@ -41,7 +41,7 @@
                     <p class="list-group-item-text"><I><b>@Html.DisplayFor(model => experience.CompanyDesc)</b></I></p>
 
                     <ul class="a">
-                        @foreach (var dutys in experience.Dutys)
+                        @foreach (var dutys in experience.Dutys.OrderBy(y => y.Priority))
                         {
                             <li><p class="list-group-item-text">@Html.DisplayFor(model => dutys.Description)</p></li>
                         }

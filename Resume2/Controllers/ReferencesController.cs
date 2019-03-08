@@ -20,14 +20,21 @@ namespace Resume2.Controllers
     // GET: References
     public async Task<IActionResult> Index(int? id)
     {
-      ViewData["resumeID"] = id.Value;
-      var reference = await _context.References
-        .Where(i => i.ResumeID == id.Value)
-        .OrderBy(y => y.FirstLast)
-        .AsNoTracking()
-        .ToListAsync();
 
-      return View(reference);
+      if (id is null)
+      {
+        return RedirectToAction(nameof(Index), "Resumes");
+      }
+      else
+      {
+        ViewData["resumeID"] = id.Value;
+        var reference = await _context.References
+          .Where(i => i.ResumeID == id.Value)
+          .OrderBy(y => y.FirstLast)
+          .AsNoTracking()
+          .ToListAsync();
+        return View(reference);
+      }
     }
 
     // GET: References/Details/5

@@ -20,6 +20,11 @@ namespace Resume2.Controllers
     // GET: Duties
     public async Task<IActionResult> Index(int? id)
     {
+
+      if (id is null)
+      {
+        return RedirectToAction(nameof(Index), "Resumes");
+      }
       ViewData["experienceID"] = id.Value;
 
       var duty = await _context.Dutys
