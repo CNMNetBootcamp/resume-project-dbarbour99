@@ -9,9 +9,11 @@ using Microsoft.EntityFrameworkCore;
 using Resume2.Data;
 using Resume2.Models;
 
+
 namespace Resume2.Controllers
 {
 
+  [Authorize]
   public class ResumesController : Controller
     {
         private readonly Resume2Context _context;
