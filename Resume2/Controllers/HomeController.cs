@@ -3,9 +3,11 @@ using Resume2.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Resume2.Controllers
 {
+  //[Authorize]
   public class HomeController : Controller
   {
     private readonly Resume2Context _context;

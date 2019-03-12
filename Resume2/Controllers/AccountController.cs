@@ -16,8 +16,8 @@ using Resume2.Services;
 
 namespace Resume2.Controllers
 {
-  [Authorize]
-  [Route("[controller]/[action]")]
+  //[Authorize]
+  //[Route("[controller]/[action]")]
   public class AccountController : Controller
   {
     private readonly UserManager<ApplicationUser> _userManager;

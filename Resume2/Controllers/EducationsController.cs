@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Resume2.Data;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Resume2.Controllers
 {
+  [Authorize]
   public class EducationsController : Controller
   {
     private readonly Resume2Context _context;
